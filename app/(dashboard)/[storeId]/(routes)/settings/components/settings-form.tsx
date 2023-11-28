@@ -24,6 +24,7 @@ import {
 import  { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { ApiAlert } from "@/components/ui/api-alert";
+import { useOrigin } from "@/hooks/use-origin";
 
 interface SettingFromProps {
     initialData: Store;
@@ -40,6 +41,7 @@ export const SettingsForm: React.FC<SettingFromProps> = ({
 }) => {
     const params = useParams();
     const router = useRouter();
+    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -125,7 +127,7 @@ export const SettingsForm: React.FC<SettingFromProps> = ({
         <Separator/>
         <ApiAlert 
             title="NEXT_PUBLIC_API_URL" 
-            description={`${origin}/api/${params.storeId}`} 
+            description={`${origin}/api/${params.storeId}`}
             variant="public" 
         />
         </>

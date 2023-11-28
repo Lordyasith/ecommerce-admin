@@ -46,10 +46,12 @@ export default function StoreSwitcher({
   const currentStore = formattedItems.find(
     (item) => item.value === params.storeId
   );
+
   const [open, setOpen] = useState(false);
+  
   const onStoreSelect = (store: { value: string; label: string }) => {
     setOpen(false);
-    router.push(`/$(store.value)`);
+    router.push(`/${store.value}`);
   };
 
   return (
@@ -64,7 +66,7 @@ export default function StoreSwitcher({
           className={cn("w-[200px] justify-between", className)}
         >
           <StoreIcon className="mr-2 h-4 w-4" />
-          Current Store
+          {currentStore?.label}
           <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
